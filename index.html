@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+
+        let computerScore = 0;
+        let humanScore = 0;
        function getHumanChoice(){
         return prompt("Enter your choice: ")
        }
@@ -24,7 +27,42 @@
         }
        }
 
-       console.log("You choose:", getHumanChoice(), "computer chose::", getComputerChoice());
+    //    console.log("You choose:", getHumanChoice(), "computer chose::", getComputerChoice());
+
+    function playRound(humanChoice, computerChoice){
+        humanChoice = humanChoice.toLowerCase();
+        if (humanChoice === computerChoice){
+            console.log("It's a tie");
+        }
+        else if (
+            (computerChoice === "rock" && humanChoice === "scissors") ||
+            (computerChoice === "scissors" && humanChoice === "paper") ||
+            (computerChoice === "paper" && humanChoice === "rock")
+        ){
+            console.log(`You lost! Computer choose ${computerChoice}`);
+            computerScore++;
+            
+        }else{
+            console.log(`You won! Computer choose ${computerChoice}.`);
+            humanScore++;
+        }
+        console.log(`Scores >> Human:: ${humanScore} | Computer:: ${computerScore}`)     
+    }
+
+    // console
+    // const humanSelection = getHumanChoice();
+    // const computerSelection = getComputerChoice();
+    // playRound(humanSelection, computerSelection);
+
+    function playGame(){
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+
+    playGame();
+    playGame();
+    playGame();
     </script>
 </body>
 </html>
